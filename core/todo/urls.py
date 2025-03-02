@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, include
 from . import views
 
 urlpatterns = [
@@ -7,4 +7,5 @@ urlpatterns = [
     path('edit/<int:pk>', views.TodoEditView.as_view(), name='todo_edit'),
     path('delete/<int:pk>', views.TodoDeleteView.as_view(), name='todo_delete'),
     path('create/', views.TodoCreateView.as_view(), name='todo_create'),
+    path('api/v1/', include('todo.api.v1.urls')),
 ]
