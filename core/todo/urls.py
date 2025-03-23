@@ -1,6 +1,8 @@
 from django.urls import path, include
 from . import views
 
+app_name = 'todo'
+
 urlpatterns = [
     path('', views.TodoListView.as_view(), name='todo_list'),
     path('complete/<int:pk>', views.TodoCompleteView.as_view(), name='todo_complete'),
