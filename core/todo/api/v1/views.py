@@ -7,19 +7,18 @@ from .serializers import TodoSerializer
 from .permissions import IsUser
 from .paginations import DefaultPagination
 
+
 class TodoViewSet(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated, IsUser]
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     pagination_class = DefaultPagination
-    filterset_fields = ['complete']
-    search_fields = ['title']
-    ordering_fields = ['updated_date']
+    filterset_fields = ["complete"]
+    search_fields = ["title"]
+    ordering_fields = ["updated_date"]
 
     def get_queryset(self):
         return Todo.objects.filter(user=self.request.user)
 
     def perform_create(self, serializer):
         serializer.save(complete=False)
-
-    
