@@ -7,7 +7,6 @@ from .serializers import TodoSerializer
 from .permissions import IsUser
 from .paginations import DefaultPagination
 
-
 class TodoViewSet(viewsets.ModelViewSet):
     serializer_class = TodoSerializer
     permission_classes = [IsAuthenticated, IsUser]

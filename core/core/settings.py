@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "todo",
     "accounts",
+    "weather",
     "rest_framework",
     "rest_framework.authtoken",
     "markdown",
@@ -179,5 +180,16 @@ CELERY_BEAT_SCHEDULE = {
     'delete_task' : {
         'task': 'todo.tasks.delete_todo',
         'schedule': 600
+    }
+}
+
+# cashing config
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/2",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
     }
 }
