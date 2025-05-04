@@ -7,6 +7,15 @@ services:
       - "6379:6379"
     command: redis-server --save 60 1 --loglevel warning
 
+  db:
+    image: postgres:15
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    env_file:
+      - ./envs/dev/postgre/.env
+
   backend:
     build: .
     container_name: todo_backend
@@ -18,11 +27,11 @@ services:
       
     expose:
       - "8000"
-    environment:
-      - SECRET_KEY=test
-      - DEBUG=False
+    env_file:
+      - ./envs/prod/django/.env
     depends_on:
       - redis
+      - db
 
   nginx:
     image: nginx
@@ -60,3 +69,4 @@ services:
 volumes:
   static_volume:
   media_volume:
+  postgres_data:
