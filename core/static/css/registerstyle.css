@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6e45e2, #88d3ce);
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.register-container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+.register-container:hover {
+    transform: translateY(-10px);
+}
+.register-container h2 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 2rem;
+}
+.register-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+.register-container input[type="text"],
+.register-container input[type="password"] {
+    padding: 0.75rem;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    background: #f0f0f0;
+    outline: none;
+    transition: background 0.3s ease;
+}
+.register-container input[type="text"]:focus,
+.register-container input[type="password"]:focus {
+    background: #e0e0e0;
+}
+.register-container button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.75rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    width: 100%;
+    font-size: 1.1rem;
+}
+.register-container button:hover {
+    background: #0056b3;
+}
+.login-link {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: #333;
+}
+.login-link a {
+    color: #007bff;
+    text-decoration: none;
+    transition: text-decoration 0.3s;
+}
+.login-link a:hover {
+    text-decoration: underline;
+}
+.register-container .errorlist {
+    display: none;
+}

@@ -1,0 +1,49 @@
+body {
+  background-color: #f0f2f5;
+}
+.todo-card {
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  margin-top: 30px;
+  padding: 20px;
+}
+.todo-complete {
+  text-decoration: line-through;
+  color: grey;
+}
+.logout-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+.btn-done {
+  background-color: #28a745;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #1e7e34;
+  box-shadow: 0 4px 6px rgba(40, 167, 69, 0.5);
+}
+.btn-delete {
+  background-color: #dc3545;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #b02a37;
+  box-shadow: 0 4px 6px rgba(220, 53, 69, 0.5);
+}
+.btn-edit {
+  background-color: #ffc107;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #e0a800;
+  box-shadow: 0 4px 6px rgba(255, 193, 7, 0.5);
+}
+.btn-done:hover {
+  background-color: #218838;
+}
+.btn-delete:hover {
+  background-color: #c82333;
+}
+.btn-edit:hover {
+  background-color: #e0a800;
+}

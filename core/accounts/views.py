@@ -22,4 +22,4 @@ class LoginView(LoginView):
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        return reverse_lazy("todo_list")
+        return reverse_lazy("todo:todo_list")
