@@ -9,12 +9,16 @@ services:
 
   db:
     image: postgres:15
+    container_name: todo_postgres
     restart: always
+    environment:
+      POSTGRES_DB: core_db
+      POSTGRES_USER: core_user
+      POSTGRES_PASSWORD: core_pass
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-
-    env_file:
-      - ./envs/dev/postgre/.env
+      - postgres_data:/var/lib/postgresql/data/
+    expose:
+      - "5432"
 
   backend:
     build: .
@@ -27,8 +31,12 @@ services:
       
     expose:
       - "8000"
-    env_file:
-      - ./envs/prod/django/.env
+    environment:
+      - SECRET_KEY=test
+      - DEBUG=False
+      - POSTGRES_DB=core_db
+      - POSTGRES_USER=core_user
+      - POSTGRES_PASSWORD=core_pass
     depends_on:
       - redis
       - db
