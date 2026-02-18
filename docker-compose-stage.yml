@@ -12,9 +12,9 @@ services:
     container_name: todo_postgres
     restart: always
     environment:
-      POSTGRES_DB: core_db
-      POSTGRES_USER: core_user
-      POSTGRES_PASSWORD: core_pass
+      POSTGRES_DB: saeed
+      POSTGRES_USER: saeed
+      POSTGRES_PASSWORD: saeed
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     expose:
@@ -34,9 +34,9 @@ services:
     environment:
       - SECRET_KEY=test
       - DEBUG=False
-      - POSTGRES_DB=core_db
-      - POSTGRES_USER=core_user
-      - POSTGRES_PASSWORD=core_pass
+      - POSTGRES_DB=saeed
+      - POSTGRES_USER=saeed
+      - POSTGRES_PASSWORD=saeed
     depends_on:
       - redis
       - db

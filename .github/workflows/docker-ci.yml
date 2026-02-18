@@ -13,9 +13,9 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      POSTGRES_DB: core_db
-      POSTGRES_USER: core_user
-      POSTGRES_PASSWORD: core_pass
+      POSTGRES_DB: saeed
+      POSTGRES_USER: saeed
+      POSTGRES_PASSWORD: saeed
 
     steps:
     - uses: actions/checkout@v4
