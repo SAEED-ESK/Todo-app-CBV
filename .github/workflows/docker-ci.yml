@@ -12,6 +12,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      POSTGRES_DB: ${{secrets.POSTGRES_DB}}
+      POSTGRES_USER: ${{secrets.OSTGRES_USER}}
+      POSTGRES_PASSWORD: ${{secrets.POSTGRES_PASSWORD}}
+
     steps:
     - uses: actions/checkout@v4
     - name: SetUp Decker Compose
