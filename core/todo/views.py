@@ -47,4 +47,3 @@ class TodoDeleteView(LoginRequiredMixin, DeleteView):
     model = Todo
     template_name = "todo/todo_list.html"
     success_url = "/"
-

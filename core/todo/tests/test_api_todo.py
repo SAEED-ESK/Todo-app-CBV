@@ -50,20 +50,14 @@ class TestApiTodo:
         self, api_client, common_user, example_task
     ):
         api_client.force_authenticate(user=common_user)
-        url = reverse(
-            "todo:api/v1:todo-detail", kwargs={"pk": example_task.id}
-        )
+        url = reverse("todo:api/v1:todo-detail", kwargs={"pk": example_task.id})
         response = api_client.get(url)
         assert response.status_code == 200
         assert response.data["title"] == "test"
 
-    def test_put_todo_response_200_status(
-        self, api_client, common_user, example_task
-    ):
+    def test_put_todo_response_200_status(self, api_client, common_user, example_task):
         api_client.force_authenticate(user=common_user)
-        url = reverse(
-            "todo:api/v1:todo-detail", kwargs={"pk": example_task.id}
-        )
+        url = reverse("todo:api/v1:todo-detail", kwargs={"pk": example_task.id})
         data = {"title": "test", "complete": True}
         response = api_client.put(url, data)
         assert response.status_code == 200
@@ -73,9 +67,7 @@ class TestApiTodo:
         self, api_client, common_user, example_task
     ):
         api_client.force_authenticate(user=common_user)
-        url = reverse(
-            "todo:api/v1:todo-detail", kwargs={"pk": example_task.id}
-        )
+        url = reverse("todo:api/v1:todo-detail", kwargs={"pk": example_task.id})
         data = {"title": "edited test"}
         response = api_client.patch(url, data)
         assert response.status_code == 200
@@ -85,9 +77,7 @@ class TestApiTodo:
         self, api_client, common_user, example_task
     ):
         api_client.force_authenticate(user=common_user)
-        url = reverse(
-            "todo:api/v1:todo-detail", kwargs={"pk": example_task.id}
-        )
+        url = reverse("todo:api/v1:todo-detail", kwargs={"pk": example_task.id})
         response = api_client.delete(url)
         assert response.status_code == 204
         assert Todo.objects.filter(pk=example_task.id).exists() is False

@@ -39,9 +39,7 @@ class CustomAuthToken(ObtainAuthToken):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data["user"]
         token, created = Token.objects.get_or_create(user=user)
-        return Response(
-            {"token": token.key, "user_id": user.pk, "email": user.email}
-        )
+        return Response({"token": token.key, "user_id": user.pk, "email": user.email})
 
 
 class LogoutAuthToken(APIView):
@@ -72,9 +70,7 @@ class ChangePasswordView(generics.GenericAPIView):
 
         if serializer.is_valid():
             # Check old password
-            if not self.object.check_password(
-                serializer.data.get("old_password")
-            ):
+            if not self.object.check_password(serializer.data.get("old_password")):
                 return Response(
                     {"old_password": ["Wrong password."]},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -162,9 +158,7 @@ class ResetPasswordConfirmView(generics.GenericAPIView):
 
             reset_obj.delete()
 
-            return Response(
-                {"success": "Password updated"}, status=status.HTTP_200_OK
-            )
+            return Response({"success": "Password updated"}, status=status.HTTP_200_OK)
         else:
             return Response(
                 {"error": "No user found"}, status=status.HTTP_404_NOT_FOUND

@@ -15,9 +15,7 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def validate(self, attrs):
         if attrs["password"] != attrs["password1"]:
-            raise serializers.ValidationError(
-                {"error": "passwords dont match"}
-            )
+            raise serializers.ValidationError({"error": "passwords dont match"})
         try:
             validate_password(attrs.get("password"))
         except exceptions.ValidationError as e:
@@ -44,9 +42,7 @@ class ChangePasswordSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         if attrs["new_password"] != attrs["new_password1"]:
-            raise serializers.ValidationError(
-                {"error": "passwords dont match"}
-            )
+            raise serializers.ValidationError({"error": "passwords dont match"})
         try:
             validate_password(attrs.get("new_password"))
         except exceptions.ValidationError as e:
@@ -59,7 +55,7 @@ class ResetPasswordRequestSerializer(serializers.Serializer):
 
     class Meta:
         model = PasswordReset
-        fields = ['email']
+        fields = ["email"]
 
 
 class ResetPasswordSerializer(serializers.Serializer):
@@ -70,9 +66,7 @@ class ResetPasswordSerializer(serializers.Serializer):
 
     def validate(self, attrs):
         if attrs["new_password"] != attrs["new_password1"]:
-            raise serializers.ValidationError(
-                {"error": "passwords dont match"}
-            )
+            raise serializers.ValidationError({"error": "passwords dont match"})
         try:
             validate_password(attrs.get("new_password"))
         except exceptions.ValidationError as e:

@@ -96,13 +96,13 @@ WSGI_APPLICATION = "core.wsgi.application"
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),
-        'PORT': os.environ.get('DB_PORT', '5432'),
+    "default": {
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": os.environ.get("DB_NAME"),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT", "5432"),
     }
 }
 
@@ -183,10 +183,7 @@ CORS_ALLOWED_ORIGINS = [
 CELERY_BROKER_URL = "redis://redis:6379/1"
 
 CELERY_BEAT_SCHEDULE = {
-    'delete_task' : {
-        'task': 'todo.tasks.delete_todo',
-        'schedule': 600
-    }
+    "delete_task": {"task": "todo.tasks.delete_todo", "schedule": 600}
 }
 
 # cashing config
@@ -196,6 +193,6 @@ CACHES = {
         "LOCATION": "redis://redis:6379/2",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        }
+        },
     }
 }
