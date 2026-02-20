@@ -14,7 +14,15 @@ class RegisterView(CreateView):
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect("todo_list")
-        return super(RegisterView, self).get(*args, **kwargs)
+        return super().get(*args, **kwargs)
+
+    def form_invalid(self, form):
+        print("FORM INVALID:", form.errors)
+        return super().form_invalid(form)
+
+    def form_valid(self, form):
+        print("FORM VALID")
+        return super().form_valid(form)
 
 
 class LoginView(LoginView):
