@@ -14,7 +14,7 @@ class TodoListView(LoginRequiredMixin, ListView):
         return self.model.objects.filter(user=self.request.user)
 
 
-class TodoCreateView(LoginRequiredMixin, CreateView, ListView):
+class TodoCreateView(LoginRequiredMixin, CreateView):
     model = Todo
     fields = ["title"]
     template_name = "todo/todo_list.html"
@@ -24,13 +24,14 @@ class TodoCreateView(LoginRequiredMixin, CreateView, ListView):
         form.instance.user = self.request.user
         return super().form_valid(form)
 
-
 class TodoEditView(LoginRequiredMixin, UpdateView):
     model = Todo
     fields = ["title"]
     template_name = "todo/todo_edit.html"
     success_url = "/"
 
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
 
 class TodoCompleteView(LoginRequiredMixin, UpdateView):
     model = Todo
@@ -41,9 +42,15 @@ class TodoCompleteView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.complete = True
         return super().form_valid(form)
+    
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
 
 
 class TodoDeleteView(LoginRequiredMixin, DeleteView):
     model = Todo
     template_name = "todo/todo_list.html"
     success_url = "/"
+
+    def get_queryset(self):
+        return super().get_queryset().filter(user=self.request.user)
