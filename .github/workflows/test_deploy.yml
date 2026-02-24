@@ -45,4 +45,5 @@ jobs:
           docker compose -f docker-compose-stage.yml stop
           git pull
           docker compose -f docker-compose-stage.yml restart
+          docker compose exec backend python manage.py collectstatic --noinput
           
