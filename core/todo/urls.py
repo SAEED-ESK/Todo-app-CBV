@@ -10,6 +10,11 @@ urlpatterns = [
         views.TodoCompleteView.as_view(),
         name="todo_complete",
     ),
+    path(
+        "undo/<int:pk>",
+        views.TodoUndoView.as_view(),
+        name="todo_undo",
+    ),
     path("edit/<int:pk>", views.TodoEditView.as_view(), name="todo_edit"),
     path("delete/<int:pk>", views.TodoDeleteView.as_view(), name="todo_delete"),
     path("create/", views.TodoCreateView.as_view(), name="todo_create"),

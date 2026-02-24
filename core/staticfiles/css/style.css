@@ -38,6 +38,16 @@ body {
   border: 2px solid #e0a800;
   box-shadow: 0 4px 6px rgba(255, 193, 7, 0.5);
 }
+.btn-undo {
+  background-color: #6c757d;
+  color: white;
+  font-weight: bold;
+  border: 2px solid #545b62;
+  box-shadow: 0 4px 6px rgba(108, 117, 125, 0.5);
+}
+.btn-undo:hover {
+  background-color: #5c636a;
+}
 .btn-done:hover {
   background-color: #218838;
 }

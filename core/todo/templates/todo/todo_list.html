@@ -57,11 +57,18 @@
                     </div>
                     <div>
                         <a href="{% url 'todo:todo_edit' todo.pk %}" class="btn btn-edit btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                        <form method="post" action="{% url 'todo:todo_complete' todo.pk %}" class="d-inline">
-                            {% csrf_token %}
-                            <button class="btn btn-done btn-sm" type="submit"><i class="fas fa-check"></i> Done</button>
-                        </form>
-                        <form method="post" action="{% url 'todo:todo_delete' todo.pk %}" class="d-inline">
+                        {% if todo.complete %}
+                            <form method="post" action="{% url 'todo:todo_undo' todo.pk %}" class="d-inline-block">
+                                {% csrf_token %}
+                                <button class="btn btn-undo btn-sm" type="submit"><i class="fas fa-undo"></i> Undo</button>
+                            </form>
+                        {% else %}
+                            <form method="post" action="{% url 'todo:todo_complete' todo.pk %}" class="d-inline-block">
+                                {% csrf_token %}
+                                <button class="btn btn-done btn-sm" type="submit"><i class="fas fa-check"></i> Done</button>
+                            </form>
+                        {% endif %}
+                        <form method="post" action="{% url 'todo:todo_delete' todo.pk %}" class="d-inline-block">
                             {% csrf_token %}
                             <button class="btn btn-delete btn-sm" type="submit"><i class="fas fa-trash-alt"></i> Delete</button>
                         </form>

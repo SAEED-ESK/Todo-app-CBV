@@ -16,15 +16,6 @@ class RegisterView(CreateView):
             return redirect("todo_list")
         return super().get(*args, **kwargs)
 
-    def form_invalid(self, form):
-        print("FORM INVALID:", form.errors)
-        return super().form_invalid(form)
-
-    def form_valid(self, form):
-        print("FORM VALID")
-        return super().form_valid(form)
-
-
 class LoginView(LoginView):
     template_name = "accounts/login.html"
     redirect_authenticated_user = True
